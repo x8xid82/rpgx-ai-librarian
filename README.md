@@ -12,6 +12,8 @@ RPGX AI Librarian is the missing link between your meticulously crafted world an
 It’s like Skynet…  
 **but for your TTRPG, and in a good way.**
 
+![Untitled-1](https://github.com/user-attachments/assets/70bb4a82-db02-43eb-bde4-c6a3eb1482e4)
+
 ---
 
 # 📌 What RPGX AI Librarian Actually Does
@@ -44,6 +46,8 @@ Your AI can now give real answers to questions like:
 All grounded in your world — **not hallucinations**.
 
 ---
+
+![Untitled-2](https://github.com/user-attachments/assets/01a661bf-aa62-4b29-98df-9ccfbaf87eb0)
 
 # 🧩 Feature Rundown
 
