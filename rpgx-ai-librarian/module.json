@@ -1,0 +1,16 @@
+{
+  "id": "rpgx-ai-librarian",
+  "title": "RPGX AI Librarian",
+  "description": "One-click ingest/wipe of Foundry journals, actors, and world items into your local RAG server for Ollama to read. Provides world specific context for the RPGX AI Assistant.",
+  "version": "1.5.0",
+  "compatibility": {
+    "minimum": "11",
+    "verified": "13.350"
+  },
+  "authors": [{ "name": "Ashton Rogers (x8xid82) | RPGX Studios | X8 Studios" }],
+  "esmodules": ["scripts/librarian.js"],
+  "styles": ["styles/librarian.css"],
+  "url": "https://x8xid82.wixsite.com/rpgxstudios",
+  "download": "https://www.patreon.com/c/rpgxstudios",
+  "license": "CC BY-NC 4.0"
+}
