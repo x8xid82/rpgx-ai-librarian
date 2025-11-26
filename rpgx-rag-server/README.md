@@ -44,7 +44,6 @@ Install Ollama from:
 
 Then open a terminal / PowerShell and pull the recommended models:
 
-```bash
 ollama pull qwen2.5:14b
 ollama pull nomic-embed-text
 
@@ -290,4 +289,5 @@ This server is designed to be local and private. Nothing leaves your machine unl
 
 At the moment, only this RPGX RAG Server API is supported by RPGX AI Librarian and RPGX AI Assistant.
 Dropping in random third-party RAG services (AnythingLLM, Gemini, etc.) will not work unless they are wrapped to match this API.
+
 
