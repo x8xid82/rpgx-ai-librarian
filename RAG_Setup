@@ -1,0 +1,171 @@
+# 🧠 RPGX RAG Server Setup
+
+RPGX AI Librarian and RPGX AI Assistant are designed to talk to a **custom RAG server API** 
+This guide shows you how to set up that RAG server using **Node.js + Ollama**.
+
+Once you’re done, Foundry will talk to:
+
+`http://YOUR-SERVER-IP:3033`
+
+---
+
+## 1. Requirements
+
+You’ll need:
+
+- **Ollama** installed (local LLM backend)
+- **Node.js 18+**
+- A machine that can reach your Foundry server over the network  
+  (this can be the same box as Foundry or a separate system)
+
+Recommended models:
+
+- LLM: `qwen2.5:14b` (or similar)
+- Embeddings: `nomic-embed-text`
+
+---
+
+## 2. Install Ollama and Models
+
+1. Install Ollama from: https://ollama.ai  
+2. Open a terminal / PowerShell and pull the models:
+
+   ```bash
+   ollama pull qwen2.5:14b
+   ollama pull nomic-embed-text
+Make sure ollama serve is running (on most systems it’s automatic).
+
+3. Get the RPGX RAG Server Files
+On the machine where you want the RAG server to run:
+
+Create a folder, for example:
+
+Documents\rpgx-rag-server
+Put these files in that folder (from the RPGX AI Librarian repo):
+
+server.js
+
+package.json
+
+Your folder should look like:
+
+rpgx-rag-server/
+  server.js
+  package.json
+4. Install Node Dependencies
+Open a terminal in that folder:
+
+## Windows (PowerShell) ##
+powershell
+
+***Copy code***
+cd $env:USERPROFILE\Documents\rpgx-rag-server
+npm install
+
+## Linux / macOS ##
+bash
+
+***Copy code***
+cd ~/rpgx-rag-server
+npm install
+This installs Express, CORS, etc.
+
+5. Set Environment Variables
+These tell the RAG server where Ollama is and what models to use.
+
+## Windows (PowerShell) ##
+powershell
+
+***Copy code***
+cd $env:USERPROFILE\Documents\rpgx-rag-server
+
+$env:OLLAMA_BASE="http://127.0.0.1:11434"
+$env:OLLAMA_LLM="qwen2.5:14b"
+$env:OLLAMA_EMBED="nomic-embed-text"
+$env:PORT="3033"
+
+npm start
+
+## Linux / macOS ##
+bash
+
+***Copy code***
+cd ~/rpgx-rag-server
+
+export OLLAMA_BASE="http://127.0.0.1:11434"
+export OLLAMA_LLM="qwen2.5:14b"
+export OLLAMA_EMBED="nomic-embed-text"
+export PORT="3033"
+
+npm start
+
+
+If everything is right you should see something like:
+
+# RAG server listening on http://127.0.0.1:3033 #
+
+Note: Leave 127.0.0.1:11434 alone if Ollama is running on the same machine.
+
+Change PORT if 3033 is already in use.
+
+6. Point Foundry to the RAG Server
+
+In Foundry:
+Go to Game Settings → Configure Settings → Module Settings
+
+Find RPGX AI Librarian
+
+Set:
+RAG Server Base URL to one of:
+
+If Foundry is on the same machine:
+
+http://127.0.0.1:3033
+
+If Foundry is on a different machine:
+
+http://<RAG-SERVER-LAN-IP>:3033
+Example: http://192.168.0.50:3033
+
+Click Save Settings.
+
+Open RPGX AI Librarian → Open Control Panel and click Ping Server.
+
+You should see a notification like:
+
+RAG ping OK. Response: {...}
+If that works, you’re good to start using Ingest All.
+
+7. Quick Troubleshooting
+“Ping failed” / cannot connect
+Check that the RAG server process (npm start) is still running.
+
+Make sure the machine’s firewall allows inbound connections on port 3033.
+
+If Foundry is remote (cloud/VPS/Azure), the RAG server must be reachable over VPN or public IP.
+
+“CORS” errors in browser console
+If your Foundry and RAG server are on different hosts, CORS can bite you. It must be enabled.
+
+The provided server.js already enables CORS for *.
+
+If you modified it, make sure cors() is enabled and OPTIONS requests are handled.
+
+AnythingLLM, Gemini, other RAG tools?
+Right now, RPGX AI Librarian expects this exact RPGX RAG server API
+(/ping, /ingest, /wipe). Other tools use different endpoints and payloads and are not supported yet.
+
+8. Summary
+Install Ollama and models
+
+Download server.js + package.json into a folder
+
+Run npm install
+
+Set OLLAMA_BASE, OLLAMA_LLM, OLLAMA_EMBED, PORT
+
+Run npm start
+
+Point the Librarian module at http://<server-ip>:3033 and hit Ping Server
+
+Once that works, you can ingest your journals/actors/items and start querying your own world data through RPGX AI Assistant.
