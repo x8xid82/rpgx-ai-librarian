@@ -146,7 +146,7 @@ Note: This RAG server is not compatible with AnythingLLM or other RAG APIs. It i
 1. Download RPGX RAG distribution package: [https://www.patreon.com/file?h=143200618&m=570813685]
 2. Unzip the file and place the unzipped "rpgx-rag-server" folder into the place you wish to host from.
 3. Open the folder, right-click inside the folder and select: "Open Terminal"
-4. Run this FIRST (required): "npm install" (only run this before first tiome setup of the RAG)
+4. Run this FIRST (required): "npm install" (only run this before first time setup of the RAG)
 5. In the terminal, enter following command: "Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass" and hit Enter
 6. Next, in the terminal, enter following command: ".\start-rag-server.ps1" and hit enter.
 7. This should create and start your RPGX RAG server. (Keep terminal open)
@@ -231,5 +231,6 @@ SOFTWARE.
 * X8 Studios
 
 ---
+
 
 
