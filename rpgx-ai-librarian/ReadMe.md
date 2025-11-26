@@ -1,40 +1,9 @@
-## License
-
-Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0) License
-
-This work is licensed under the Creative Commons Attribution-NonCommercial 4.0
-International License. To view a copy of this license, visit
-http://creativecommons.org/licenses/by-nc/4.0/.
-
-### Summary of License Terms:
-
-* **Attribution**: You must give appropriate credit, provide a link to the license, and indicate if changes were made. You may do so in any reasonable manner, but not in any way that suggests the licensor endorses you or your use.
-* **NonCommercial**: You may not use the material for commercial purposes.
-
-For more information, please see the full text of the license at
-http://creativecommons.org/licenses/by-nc/4.0/legalcode
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-
----
-
-## Contributors
-
-* Ashton Rogers (@x8xid82)
-* RPGX Studios
-* X8 Studios
-
----
-
 # 🧠 RPGX-AI Library (v1.3)
 
 *A Retrieval-Augmented Knowledge System for the RPGX-AI Assistant Module*
+
+---
+ ### Developer Note: The current version of this module requires Ollama, qwen2.5:14b, and Node.js and the RAG server included with this distribution - In future updates we hope to support more platforms. Ollama and Node.js must be installed prior to creating RAG server. I've provided a RAG distribution to get it easily set up.
 
 ---
 
@@ -157,69 +126,32 @@ When you ask the AI something, it first retrieves the most relevant chunks of yo
 ---
 
 ## 🛠️ Installation Guide
+Note: This RAG server is not compatible with AnythingLLM or other RAG APIs. It is specifically designed for the RPGX Librarian and RPGX Assistant modules.
 
 ### Step 1 — Install Ollama
 
-1. Download from [https://ollama.ai](https://ollama.ai)
-2. Run the following commands:
+1. Download from: [https://ollama.ai](https://ollama.ai)
+2. Run the following commands in terminal/powershell:
 
-```bash
    ollama pull qwen2.5:14b
    ollama pull nomic-embed-text
 
-### Step 2 — Set Up the RAG Server
+### Step 2 — Install Node.js 18+
 
-### Step 2 — Set Up the RAG Server
-
-Place server.js and package.json inside a folder, e.g.:
-
-Documents\\rag-server
+1. Download from: [Download RPGX RAG Distribution](https://www.patreon.com/file?h=143200618&m=570813685)
 
 
+### Step 3 — Set Up the RAG Server
 
-Open PowerShell or Terminal, then run:
-
-cd $env:USERPROFILE\\Documents\\rag-server
-npm install
-$env:OLLAMA\_BASE="http://127.0.0.1:11434"
-$env:OLLAMA\_LLM="qwen2.5:14b"
-$env:OLLAMA\_EMBED="nomic-embed-text"
-$env:PORT="3033"
-npm start
-
-
-
-Confirm it’s running — you should see:
-
-RAG server listening on http://127.0.0.1:3033
-
-### Step 3 — Install the Foundry Module
-
-Add the module to Foundry via Manifest URL or manual copy into Data/modules.
-
-Enable RPGX-AI Librarian in your Game World.
-
-Configure under Settings → Module Settings → RPGX AI Librarian:
-
-Set the RAG Base URL (default: http://127.0.0.1:3033).
-
-Adjust Chunk Size, Overlap, and Model settings if desired.
-
-\###Step 4 — Ingest Journals
-
-Open the Librarian Control Panel:
-Settings → RPGX AI Librarian → Open Control Panel
-
-Click “Ingest All Journals” or use the header button on a specific Journal.
-
-Watch the console for confirmation:
-
-Uploaded “Lore of Elturel” (7 chunks)
-
-\###Step 5 — Ask Questions
-
-Use any integrated AI interface (e.g., After Dark AI or GM console) to ask questions.
-The model will retrieve relevant information from your ingested journals before answering.
+1. Download RPGX RAG distribution package: [https://www.patreon.com/file?h=143200618&m=570813685]
+2. Unzip the file and place the unzipped "rpgx-rag-server" folder into the place you wish to host from.
+3. Open the folder, right-click inside the folder and select: "Open Terminal"
+4. Run this FIRST (required): "npm install" (only run this before first tiome setup of the RAG)
+5. In the terminal, enter following command: "Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass" and hit Enter
+6. Next, in the terminal, enter following command: ".\start-rag-server.ps1" and hit enter.
+7. This should create and start your RPGX RAG server. (Keep terminal open)
+8. To use make sure Ollama is running and that the module is configured in Foundry.
+9. To start server on future sessions repeat steps 5 - 7.
 
 ---
 
@@ -265,4 +197,39 @@ Timeout (ms)	60000 – 90000	Depends on hardware speed
 
 RPGX-AI Library bridges Foundry and local AI, turning your journals into a private, searchable, conversational database.
 No cloud, no subscriptions — just your world, your data, your AI.
+
+## License
+
+Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0) License
+
+This work is licensed under the Creative Commons Attribution-NonCommercial 4.0
+International License. To view a copy of this license, visit
+http://creativecommons.org/licenses/by-nc/4.0/.
+
+### Summary of License Terms:
+
+* **Attribution**: You must give appropriate credit, provide a link to the license, and indicate if changes were made. You may do so in any reasonable manner, but not in any way that suggests the licensor endorses you or your use.
+* **NonCommercial**: You may not use the material for commercial purposes.
+
+For more information, please see the full text of the license at
+http://creativecommons.org/licenses/by-nc/4.0/legalcode
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+---
+
+## Contributors
+
+* Ashton Rogers (@x8xid82)
+* RPGX Studios
+* X8 Studios
+
+---
+
 
